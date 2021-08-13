@@ -1,0 +1,81 @@
+{% set name = "dream3d-conda" %}
+{% set version = "1.3.0" %}
+{% if DREAM3D_PLUGINS is defined %}
+  {% set plugin_list = DREAM3D_PLUGINS.split(';') %}
+{% endif %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  - path: .
+    folder: DREAM3D
+  - path: .
+    folder: CMP
+  - path: .
+    folder: SIMPL
+  - path: .
+    folder: SIMPLView
+  - path: .
+    folder: EbsdLib
+  - path: .
+    folder: H5Support
+  - path: .
+    folder: DREAM3D_Data
+{% for plugin in plugin_list|default([]) %}
+  - path: ./DREAM3D_Plugins/{{ plugin }}
+    folder: DREAM3D_Plugins/{{ plugin }}
+{% endfor %}
+
+build:
+  number: 0
+  script_env:
+    - DREAM3D_PLUGINS={{ DREAM3D_PLUGINS|default("") }}
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - "cmake>=3.16"
+    - ninja
+    - git
+    - {{ cdt('mesa-libgl-devel') }} # [linux]
+    - {{ cdt('mesa-dri-drivers') }} # [linux]
+    - {{ cdt('libselinux') }} # [linux]
+    - {{ cdt('libxdamage') }} # [linux]
+    - {{ cdt('libxxf86vm') }} # [linux]
+    - {{ cdt('libxext') }} # [linux]
+  host:
+    - python
+    - mkdocs
+    - mkdocs-material
+    - mkdocs-material-extensions
+    - cpp-filesystem
+    - eigen
+    - hdf5=1.10.5
+    - libharu
+    - libitk
+    - libitk-devel
+    - "numpy>=1.16"
+    - mypy
+    - "pybind11>=2.6"
+    - "qt>=5.9"
+    - qwt
+    - tbb
+    - tbb-devel
+    - xorg-libxfixes # [linux]
+  run:
+    - python
+    - numpy
+    - hdf5=1.10.5
+    - libharu
+    - libitk
+    - qt
+    - qwt
+    - tbb
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.14") }} # [osx and x86_64]
+
+about:
+  home: http://dream3d.bluequartz.net/
+  license: BSD
+  summary: DREAM.3D consists of data analysis tools (Filters) that allow for the construction of customized workflows (Pipelines) to analyze data.
