@@ -1,8 +1,8 @@
 if not exist "%PREFIX%\Menu" mkdir "%PREFIX%\Menu"
-copy "%SRC_DIR%\DREAM3D\Conda\menu-windows.json" "%PREFIX%\Menu\%PKG_NAME%.json"
+copy "%SRC_DIR%\menu-windows.json" "%PREFIX%\Menu\%PKG_NAME%.json"
 copy "%SRC_DIR%\DREAM3D\Resources\OpenSourceEdition\icons\ico\DREAM3D.ico" "%PREFIX%\Menu"
 
-copy "%SRC_DIR%\DREAM3D\Conda\run_dream3d_win.py" "%PREFIX%\Scripts"
+copy "%SRC_DIR%\run_dream3d_win.py" "%PREFIX%\Scripts"
 
 mkdir build
 cd build

@@ -9,24 +9,41 @@ package:
   version: {{ version }}
 
 source:
-  - path: .
-    folder: DREAM3D
-  - path: .
+  - git_url: https://github.com/bluequartzsoftware/CMP.git
+    git_depth: 1 # (Defaults to -1/not shallow)
     folder: CMP
-  - path: .
+  - git_url: https://github.com/bluequartzsoftware/SIMPL.git
+    git_depth: 1 # (Defaults to -1/not shallow)
     folder: SIMPL
-  - path: .
+  - git_url: https://github.com/bluequartzsoftware/SIMPLView.git
+    git_depth: 1 # (Defaults to -1/not shallow)
     folder: SIMPLView
-  - path: .
-    folder: EbsdLib
-  - path: .
+  - git_url: https://github.com/bluequartzsoftware/H5Support.git
+    git_depth: 1 # (Defaults to -1/not shallow)
     folder: H5Support
-  - path: .
+  - git_url: https://github.com/bluequartzsoftware/EbsdLib.git
+    git_depth: 1 # (Defaults to -1/not shallow)
+    folder: EbsdLib
+  - git_url: https://github.com/bluequartzsoftware/DREAM3D.git
+    git_depth: 1 # (Defaults to -1/not shallow)
+    folder: DREAM3D
+  - git_url: https://github.com/DREAM3D/DREAM3D_Data.git
+    git_depth: 1 # (Defaults to -1/not shallow)
     folder: DREAM3D_Data
-{% for plugin in plugin_list|default([]) %}
-  - path: ./DREAM3D_Plugins/{{ plugin }}
-    folder: DREAM3D_Plugins/{{ plugin }}
-{% endfor %}
+  - git_url: https://github.com/DREAM3D/DREAM3DReview.git
+    git_depth: 1 # (Defaults to -1/not shallow)
+    folder: DREAM3D_Plugins/DREAM3DReview
+  - git_url: https://github.com/DREAM3D/UCSBUtilities.git
+    git_depth: 1 # (Defaults to -1/not shallow)
+    folder: DREAM3D_Plugins/UCSBUtilities
+  - git_url: https://github.com/bluequartzsoftware/ITKImageProcessing.git
+    git_depth: 1 # (Defaults to -1/not shallow)
+    folder: DREAM3D_Plugins/ITKImageProcessing
+  - git_url: https://github.com/bluequartzsoftware/SimulationIO.git
+    git_depth: 1 # (Defaults to -1/not shallow)
+    folder: DREAM3D_Plugins/SimulationIO
+  - path: Conda
+    folder: DREAM3D/Conda
 
 build:
   number: 0
