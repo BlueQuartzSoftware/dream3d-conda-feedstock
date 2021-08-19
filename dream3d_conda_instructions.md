@@ -58,7 +58,7 @@ The initial "solving environment" step may take a while in particular, and it do
 
 ```lang-console
 (d3d-build-37) C:\Users\johnsmith> cd dream3d-conda-feedstock
-(d3d-build-37) C:\Users\johnsmith\dream3d-conda-feedstock> conda build .
+(d3d-build-37) C:\Users\johnsmith\dream3d-conda-feedstock> conda-build .
 ```
 
 Install locally built *DREAM3D* package into a different virtual environment
