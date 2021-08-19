@@ -78,9 +78,9 @@ DREAM3D, and related applications, must be run from within the conda environment
 i.e.:
 
 ```lang-console
-(base) C:\Users\johnsmith> conda activate d3d-build-37
-(d3d-build-37) C:\Users\johnsmith> DREAM3D.exe
-(d3d-build-37) C:\Users\johnsmith> PipelineRunner --pipeline /path/to/pipeline.json
+(base) C:\Users\johnsmith> conda activate d3d
+(d3d) C:\Users\johnsmith> DREAM3D(.exe)
+(d3d) C:\Users\johnsmith> PipelineRunner(.exe) --pipeline /path/to/pipeline.json
 ```
 
 The same environment must also be used for the Python bindings. The Python bindings are within the dream3d package and can be accessed like the following:
