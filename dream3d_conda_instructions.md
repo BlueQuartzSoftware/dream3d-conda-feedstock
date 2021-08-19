@@ -22,38 +22,14 @@ Please see the file _conda\_filter\_development.md_ file for instructions.
 + Install [Anaconda](https://docs.anaconda.com/anaconda/install/)
 + Setup [conda-forge](https://conda-forge.org/) channel (requires conda >= 4.6)
 
-### Clone the DREAM3D git repositories ###
+### Necessary Repositories ###
 
-You wil need to clone DREAM3D development repos into a new directory of your choice
+This repository is required. clone this repo.
 
-```lang-console
-(base) C:\Users\johnsmith> mkdir DREAM3D-Dev
-(base) C:\Users\johnsmith> cd DREAM3D-Dev
-(base) C:\Users\johnsmith\DREAM3D-Dev> git clone https://github.com/BlueQuartzSoftware/DREAM3D
-(base) C:\Users\johnsmith\DREAM3D-Dev> git clone https://github.com/BlueQuartzSoftware/SIMPL
-(base) C:\Users\johnsmith\DREAM3D-Dev> git clone https://github.com/BlueQuartzSoftware/SIMPLView
-(base) C:\Users\johnsmith\DREAM3D-Dev> git clone https://github.com/BlueQuartzSoftware/EbsdLib
-(base) C:\Users\johnsmith\DREAM3D-Dev> git clone https://github.com/BlueQuartzSoftware/H5Support
-(base) C:\Users\johnsmith\DREAM3D-Dev> git clone https://github.com/BlueQuartzSoftware/CMP
-(base) C:\Users\johnsmith\DREAM3D-Dev> git clone https://github.com/dream3d/DREAM3D_Data
+```
+git clone ssh://git@github.com/bluequartzsoftware/dream3d-conda-feedstock
 ```
 
-We now need to clone any additional plugins that are needed. The below are the 4 standard plugins that are
-used in DREAM.3D builds.
-```lang-console
-(base) C:\Users\johnsmith\DREAM3D-Dev> mkdir DREAM3D_Plugins
-(base) C:\Users\johnsmith\DREAM3D-Dev> cd DREAM3D_Plugins
-(base) C:\Users\johnsmith\DREAM3D-Dev\DREAM3D_Plugins> git clone https://github.com/BlueQuartzSoftware/SimulationIO
-(base) C:\Users\johnsmith\DREAM3D-Dev\DREAM3D_Plugins> git clone https://github.com/BlueQuartzSoftware/ITKImageProcessing
-(base) C:\Users\johnsmith\DREAM3D-Dev\DREAM3D_Plugins> git clone https://github.com/dream3d/DREAM3DReview
-(base) C:\Users\johnsmith\DREAM3D-Dev\DREAM3D_Plugins> git clone https://github.com/dream3d/UCSBUtilities
-```
-
-We need to decompress (Unzip) the following in DREAM3D_Data directory. Use your favorite decompression tool such as **tar** or **7Zip**.
-
-+ DREAM3D_Data/Data/Image.tar.gz
-+ DREAM3D_Data/Data/SmallN100.tar.gz
-+ DREAM3D_Data/Data/T12-MAI-2010.tar.gz
 
 ### Anaconda Virtual Environment Setup ###
 
@@ -66,36 +42,33 @@ We are now ready to start building the DREAM3D Anaconda package.
 (base) C:\Users\johnsmith> conda config --set channel_priority strict
 ```
 
-+ Next we need to create an anaconda virtual environment where we will build and eventually install the **dream3d** package. In this example we are calling our virtual environment **d3d_embed** and we are going to use python version 3.7. Create a new conda virtual environment:
++ Next we need to create an anaconda virtual environment where we will build and eventually install the **dream3d** package. In this example we are calling our virtual environment **d3d-build-37** and we are going to use python version 3.7. You should be able to use python versions 3.7/3.8/3.9. Create a new conda virtual environment that also has the *conda-build* package installed
 
 ```lang-console
-(base) C:\Users\johnsmith> conda create -n d3d_embed python=3.7
-(base) C:\Users\johnsmith> conda activate d3d_embed
-(d3d_embed) C:\Users\johnsmith> 
+(base) C:\Users\johnsmith> conda create -n d3d-build-37 python=3.7 conda-build
+(base) C:\Users\johnsmith> conda activate d3d-build-37
+(d3d-build-37) C:\Users\johnsmith> 
 ```
 
-+ Now that the virtual environment is setup we need to install the **conda-build** tooling:
++ Use conda build DREAM3D within the **d3d-build-37** virtual environment:
 
-```lang-console
-(d3d_embed) C:\Users\johnsmith> conda install conda-build
-```
-
-+ Use conda build DREAM3D within the **d3d_embded** virtual environment:
-
-The build takes around 15 min to complete on a 12 core machine with SSD storage.
+The build takes around 20 min to complete on a 12 core machine with SSD storage.
 
 The initial "solving environment" step may take a while in particular, and it does not have a progress indicator.
 
 ```lang-console
-(d3d_embed) C:\Users\johnsmith> conda build /path/to/DREAM3D/Conda
+(d3d-build-37) C:\Users\johnsmith> cd dream3d-conda-feedstock
+(d3d-build-37) C:\Users\johnsmith\dream3d-conda-feedstock> conda build .
 ```
 
-Install locally built *DREAM3D* package into the current virtual environment
+Install locally built *DREAM3D* package into a different virtual environment
 
 + Make sure the Python version of the environment matches the version used to build DREAM3D.
 
 ```lang-console
-(d3d_embed) C:\Users\johnsmith> conda install -c local dream3d
+(base) C:\Users\johnsmith> conda create -n d3d python=3.7
+(base) C:\Users\johnsmith> conda activate d3d
+(d3d) C:\Users\johnsmith> conda install -c /path/to/conda-bld dream3d-conda
 ```
 
 ## Running DREAM3D from Anaconda ##
@@ -105,9 +78,9 @@ DREAM3D, and related applications, must be run from within the conda environment
 i.e.:
 
 ```lang-console
-(base) C:\Users\johnsmith> conda activate d3d_embed
-(d3d_embed) C:\Users\johnsmith> DREAM3D.exe
-(d3d_embed) C:\Users\johnsmith> PipelineRunner --pipeline /path/to/pipeline.json
+(base) C:\Users\johnsmith> conda activate d3d-build-37
+(d3d-build-37) C:\Users\johnsmith> DREAM3D.exe
+(d3d-build-37) C:\Users\johnsmith> PipelineRunner --pipeline /path/to/pipeline.json
 ```
 
 The same environment must also be used for the Python bindings. The Python bindings are within the dream3d package and can be accessed like the following:
