@@ -6,3 +6,10 @@ MACOSX_DEPLOYMENT_TARGET: # [osx and x86_64]
 
 DREAM3D_PLUGINS:
   - "DREAM3DReview;ITKImageProcessing;SimulationIO;UCSBUtilities"
+
+
+python:
+    - 3.7
+    - 3.8
+    - 3.9
+    

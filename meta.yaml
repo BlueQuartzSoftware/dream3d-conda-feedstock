@@ -63,7 +63,7 @@ requirements:
     - {{ cdt('libxxf86vm') }} # [linux]
     - {{ cdt('libxext') }} # [linux]
   host:
-    - python
+    - python {{ python }}
     - mkdocs
     - mkdocs-material
     - mkdocs-material-extensions
