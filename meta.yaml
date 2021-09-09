@@ -1,5 +1,5 @@
 {% set name = "dream3d-conda" %}
-{% set version = "1.4.0" %}
+{% set version = "1.4.1" %}
 {% if DREAM3D_PLUGINS is defined %}
   {% set plugin_list = DREAM3D_PLUGINS.split(';') %}
 {% endif %}
@@ -69,14 +69,14 @@ requirements:
     - mkdocs-material-extensions
     - cpp-filesystem
     - eigen
-    - hdf5=1.10.5
+    - hdf5=1.10.6
     - libharu
-    - libitk
-    - libitk-devel
-    - "numpy>=1.16"
+    - libitk=5.2.1
+    - libitk-devel=5.2.1
+    - "numpy>=1.21"
     - mypy
     - "pybind11>=2.6"
-    - "qt>=5.9"
+    - "qt>=5.12"
     - qwt
     - tbb
     - tbb-devel
@@ -84,7 +84,7 @@ requirements:
   run:
     - python
     - numpy
-    - hdf5=1.10.5
+    - hdf5=1.10.6
     - libharu
     - libitk
     - qt
