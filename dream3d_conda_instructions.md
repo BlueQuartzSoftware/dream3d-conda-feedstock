@@ -42,23 +42,23 @@ We are now ready to start building the DREAM3D Anaconda package.
 (base) C:\Users\johnsmith> conda config --set channel_priority strict
 ```
 
-+ Next we need to create an anaconda virtual environment where we will build and eventually install the **dream3d** package. In this example we are calling our virtual environment **d3d-build-37** and we are going to use python version 3.7. You should be able to use python versions 3.7/3.8/3.9. Create a new conda virtual environment that also has the *conda-build* package installed
++ Next we need to create an anaconda virtual environment where we will build and eventually install the **dream3d** package. In this example we are calling our virtual environment **d3d-build-38** and we are going to use python version 3.7. You should be able to use python versions 3.7/3.8/3.9. Create a new conda virtual environment that also has the *conda-build* package installed
 
 ```lang-console
-(base) C:\Users\johnsmith> conda create -n d3d-build-37 python=3.7 conda-build
-(base) C:\Users\johnsmith> conda activate d3d-build-37
-(d3d-build-37) C:\Users\johnsmith> 
+(base) C:\Users\johnsmith> conda create -n d3d-build-38 python=3.8 conda-build pybind11-stubgen
+(base) C:\Users\johnsmith> conda activate d3d-build-38
+(d3d-build-38) C:\Users\johnsmith> 
 ```
 
-+ Use conda build DREAM3D within the **d3d-build-37** virtual environment:
++ Use conda build DREAM3D within the **d3d-build-38** virtual environment:
 
 The build takes around 20 min to complete on a 12 core machine with SSD storage.
 
 The initial "solving environment" step may take a while in particular, and it does not have a progress indicator.
 
 ```lang-console
-(d3d-build-37) C:\Users\johnsmith> cd dream3d-conda-feedstock
-(d3d-build-37) C:\Users\johnsmith\dream3d-conda-feedstock> conda-build .
+(d3d-build-38) C:\Users\johnsmith> cd dream3d-conda-feedstock
+(d3d-build-38) C:\Users\johnsmith\dream3d-conda-feedstock> conda-build .
 ```
 
 Install locally built *DREAM3D* package into a different virtual environment
