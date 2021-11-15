@@ -86,7 +86,7 @@ requirements:
     - numpy
     - hdf5=1.10.6
     - libharu
-    - libitk
+    - libitk=5.2.1
     - qt
     - qwt
     - tbb
