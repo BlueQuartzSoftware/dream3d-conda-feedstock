@@ -9,6 +9,6 @@ DREAM3D_PLUGINS:
 
 python:
     - 3.10
-    - 3.7
+    - 3.9
     - 3.8
     
