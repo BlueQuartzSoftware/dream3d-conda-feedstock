@@ -35,7 +35,9 @@ cmake -S "$SRC_DIR/DREAM3D" -B . -G "Ninja" $CMAKE_ARGS \
   -D DREAM3D_BUILD_TOOLS:BOOL=OFF \
   -D SIMPL_BUILD_CLI_TOOLS:BOOL=OFF \
   -D EbsdLib_BUILD_TOOLS:BOOL=OFF \
-  -D ITKImageProcessing_LeanAndMean=OFF
+  -D EbsdLib_Anaconda_Install:BOOL=ON \
+  -D ITKImageProcessing_LeanAndMean=OFF 
+
 
 cmake --build . --target all
 
