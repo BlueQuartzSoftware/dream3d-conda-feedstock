@@ -32,7 +32,9 @@ cmake -S "%SRC_DIR%/DREAM3D" -B . -G "Ninja" ^
   -D BUILD_TESTING:BOOL=OFF ^
   -D DREAM3D_BUILD_TOOLS:BOOL=OFF ^
   -D SIMPL_BUILD_CLI_TOOLS:BOOL=OFF ^
-  -D EbsdLib_BUILD_TOOLS:BOOL=OFF
+  -D EbsdLib_BUILD_TOOLS:BOOL=OFF ^
+  -D EbsdLib_Anaconda_Install:BOOL=ON
+
 
 
 
