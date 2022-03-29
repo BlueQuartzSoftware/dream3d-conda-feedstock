@@ -15,7 +15,7 @@ This is the anaconda distribution of [DREAM.3D](http://dream3d.bluequartz.net) t
 
 The prebuilt python is currently in testing but should be fully functional.
 
-+ Anaconda Ptyhon Environment
++ Anaconda Python Environment
 + Python 3.8/3.9/3.10
 + Ability to install from a custom URL source.
 

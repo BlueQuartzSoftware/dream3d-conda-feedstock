@@ -64,6 +64,7 @@ requirements:
     - {{ cdt('libxext') }} # [linux]
   host:
     - python {{ python }}
+    - jinja2=3.0.0
     - mkdocs
     - mkdocs-material
     - mkdocs-material-extensions
