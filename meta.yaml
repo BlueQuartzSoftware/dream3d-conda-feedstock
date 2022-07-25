@@ -30,8 +30,8 @@ source:
   - git_url: https://github.com/DREAM3D/DREAM3D_Data.git
     git_depth: 1 # (Defaults to -1/not shallow)
     folder: DREAM3D_Data
-  - git_url: https://github.com/DREAM3D/DREAM3DReview.git
-    git_depth: 1 # (Defaults to -1/not shallow)
+  - git_url: https://github.com/mgroeber/DREAM3DReview.git
+    git_rev: topic/OSUFilters
     folder: DREAM3D_Plugins/DREAM3DReview
   - git_url: https://github.com/DREAM3D/UCSBUtilities.git
     git_depth: 1 # (Defaults to -1/not shallow)

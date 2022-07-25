@@ -8,7 +8,5 @@ DREAM3D_PLUGINS:
   - "DREAM3DReview;ITKImageProcessing;SimulationIO;UCSBUtilities"
 
 python:
-    - 3.10
-    - 3.9
     - 3.8
     
