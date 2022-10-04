@@ -1,5 +1,5 @@
 {% set name = "dream3d-conda" %}
-{% set version = "1.4.5" %}
+{% set version = "1.4.6" %}
 {% if DREAM3D_PLUGINS is defined %}
   {% set plugin_list = DREAM3D_PLUGINS.split(';') %}
 {% endif %}
